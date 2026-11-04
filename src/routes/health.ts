@@ -14,5 +14,5 @@ export const healthRoutes: FastifyPluginAsyncZod = async (app) => {
         200: healthResponse
       }
     }
-  }, async () => ({ status: 'ok' }));
+  }, async () => ({ status: 'ok' as const }));
 };
