@@ -1,18 +1,17 @@
-import type { FastifyPluginAsync } from 'fastify';
+import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod';
+import { z } from 'zod';
 
-export const healthRoutes: FastifyPluginAsync = async (app) => {
+const healthResponse = z.object({
+  status: z.literal('ok')
+});
+
+export const healthRoutes: FastifyPluginAsyncZod = async (app) => {
   app.get('/health', {
     schema: {
       tags: ['Health'],
       summary: 'Health check',
       response: {
-        200: {
-          type: 'object',
-          properties: {
-            status: { type: 'string', example: 'ok' }
-          },
-          required: ['status']
-        }
+        200: healthResponse
       }
     }
   }, async () => ({ status: 'ok' }));
