@@ -12,7 +12,7 @@ Database and authentication integrations are intentionally optional. Add them on
 ## Getting started
 
 ```bash
-npm install
+npm ci
 cp .env.example .env
 npm run dev
 ```
@@ -45,13 +45,14 @@ For production, set explicit allowed origins and review rate limits for the depl
 ## Commands
 
 ```bash
-npm run dev       # development server with reload
-npm run build     # compile TypeScript to dist/
-npm start         # run compiled server
-npm run lint      # ESLint
+npm ci           # install exact locked dependencies
+npm run dev      # development server with reload
+npm run build    # compile TypeScript to dist/
+npm start        # run compiled server
+npm run lint     # ESLint
 npm run typecheck # TypeScript checks
-npm test          # Vitest
-npm run check     # lint, typecheck, tests and build
+npm test         # Vitest
+npm run check    # lint, typecheck, tests and build
 ```
 
 ## Project structure
