@@ -23,11 +23,13 @@ jobs:
         run: npm install
       - name: Capture dependency audit report
         run: npm audit --json > npm-audit.json || true
-      - name: Upload dependency audit report
+      - name: Upload dependency audit report and generated lockfile
         uses: actions/upload-artifact@v4
         with:
-          name: npm-audit-report
-          path: npm-audit.json
+          name: npm-dependency-reports
+          path: |
+            npm-audit.json
+            package-lock.json
           if-no-files-found: error
           retention-days: 7
       - name: Run lint, typecheck, tests and build
