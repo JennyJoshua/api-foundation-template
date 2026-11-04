@@ -16,13 +16,15 @@ Maintain a reusable Node.js API foundation. Keep application-specific business l
 - Do not merge or deploy without repository-owner approval.
 - Do not introduce paid services or change the agreed framework without explicit owner approval.
 
-## Required checks
-Run these commands in a Node.js 24 environment before requesting review:
+## Dependency installation and required checks
+Use Node.js 24 and install the exact dependency tree recorded in the committed lockfile:
 
 ```bash
-npm install
+npm ci
 npm run check
 ```
+
+Do not regenerate or modify `package-lock.json` as part of routine installs. When dependency changes are approved, update the lockfile deliberately and include it in the same pull request.
 
 Report the actual commands and outcomes. If a check could not be run, say so clearly.
 
