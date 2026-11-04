@@ -20,8 +20,11 @@ export async function buildApp(config: AppConfig): Promise<FastifyInstance> {
   app.setSerializerCompiler(serializerCompiler);
 
   app.setErrorHandler((error, request, reply) => {
-    const statusCode = typeof error.statusCode === 'number' && error.statusCode >= 400 && error.statusCode < 500
+    const candidateStatusCode = typeof error === 'object' && error !== null && 'statusCode' in error
       ? error.statusCode
+      : undefined;
+    const statusCode = typeof candidateStatusCode === 'number' && candidateStatusCode >= 400 && candidateStatusCode < 500
+      ? candidateStatusCode
       : 500;
 
     if (statusCode >= 500) {
