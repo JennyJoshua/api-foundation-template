@@ -9,8 +9,7 @@ export default tseslint.config(
   {
     files: ['**/*.ts'],
     languageOptions: {
-      globals: { ...globals.node, ...globals.vitest },
-      parserOptions: { projectService: true }
+      globals: { ...globals.node, ...globals.vitest }
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
